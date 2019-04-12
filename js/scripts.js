@@ -14,23 +14,23 @@ function RegisterAccount(name, initialDeposit, depositFunds, withdrawFunds) {
 }
 
 RegisterAccount.prototype.currentBalance = function() {
-  return (this.initialDeposit + this.depositFunds) - this.withdrawFunds;
+  return (parseInt(this.initialDeposit) + parseInt(this.depositFunds)) - parseInt(this.withdrawFunds);
 }
 
 $(document).ready(function()  {
-  $(".btn").click(function() {
-    var bankaccount = new BankAccount(
+  $("#btn").click(function() {
+    var bankaccount = new RegisterAccount(
       $("#name").val(),
       $("#initialDeposit").val(),
       $("#depositFunds").val(),
       $("#withdrawFunds").val(),
     )
     var amount = bankaccount.currentBalance();
-    //
-    // $(".amount").number(amount);
+
+    $(".amount").text(parseInt(amount));
     $("#show-balance").show();
 
-    console.log(amount.currentBalance())
+    console.log(parseInt(amount))
   });
 });
 
